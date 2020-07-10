@@ -14,8 +14,15 @@ function App() {
             });
     }, []);
 
-    function handleAddProject() {
-        setProjects([...projects, `Project -> ${Date.now()}`]);
+    async function handleAddProject() {
+        const project = await api.post('/projects', {
+            title: `Project -> ${Date.now()}`,
+            owner: "Vitor Henrique"
+        });
+
+        setProjects([...projects, project.data]);
+
+        // setProjects([...projects, `Project -> ${Date.now()}`]);
     }
 
     return (
@@ -24,7 +31,7 @@ function App() {
             <ul>
                 {projects.map((project) => <li key={project.id}> {project.title} </li>)}
             </ul>
-            <button type='button' onClick={handleAddProject}>Adicionar Projeto</button>
+            <button type='button' onClick={() => handleAddProject()}>Adicionar Projeto</button>
         </>
     );
 }
