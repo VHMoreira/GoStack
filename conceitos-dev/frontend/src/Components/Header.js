@@ -1,9 +1,9 @@
 import React from "react";
 
-function Header() {
+function Header({ title, children }) {
     return (
         <header>
-            <h1>React JS</h1>
+            <h1>{children}</h1>
         </header>
     );
 }
