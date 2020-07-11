@@ -1,13 +1,29 @@
 import React from 'react'
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet, StatusBar } from "react-native";
 
 
 function App() {
     return (
-        <View>
-            <Text>Hello World! Thats my new React Native App</Text>
-        </View>
+        <>
+            <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
+            <View style={styles.container}>
+                <Text style={styles.title}>Hello World!</Text>
+            </View>
+        </>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: "center",
+        backgroundColor: "#7159c1"
+    },
+    title: {
+        fontSize: 32,
+        color: "#FFFFFF"
+    }
+});
 
 export default App;
