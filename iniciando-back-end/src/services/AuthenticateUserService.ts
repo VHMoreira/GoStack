@@ -3,7 +3,6 @@ import { compare } from 'bcryptjs';
 import { sign, verify } from 'jsonwebtoken';
 import User from '../models/User';
 import authConfig from '../config/auth';
-import auth from '../config/auth';
 
 interface Request {
   email: string;
