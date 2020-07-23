@@ -1,10 +1,10 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import { FiChevronRight } from "react-icons/fi";
+import { FiChevronRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import { Title, Form, Error, Repositories } from './style';
 
-import logoImg from "../../assets/logo.svg";
+import logoImg from '../../assets/logo.svg';
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
 
 interface Repository {
   full_name: string;
@@ -12,13 +12,15 @@ interface Repository {
   owner: {
     login: string;
     avatar_url: string;
-  }
+  };
 }
 
 const Dashboard: React.FC = () => {
   const [newRepo, setNewRepo] = useState('');
   const [repositories, setRepositories] = useState<Repository[]>(() => {
-    const storageRepositories = localStorage.getItem('@GithubExplorer:repositories');
+    const storageRepositories = localStorage.getItem(
+      '@GithubExplorer:repositories',
+    );
     if (storageRepositories) {
       return JSON.parse(storageRepositories);
     }
@@ -28,19 +30,20 @@ const Dashboard: React.FC = () => {
   const [inputError, setInputError] = useState('');
 
   useEffect(() => {
-
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('@GithubExplorer:repositories', JSON.stringify(repositories));
+    localStorage.setItem(
+      '@GithubExplorer:repositories',
+      JSON.stringify(repositories),
+    );
   }, [repositories]);
 
-  async function handleAddRepository(event: FormEvent<HTMLFormElement>): Promise<void> {
+  async function handleAddRepository(
+    event: FormEvent<HTMLFormElement>,
+  ): Promise<void> {
     event.preventDefault();
 
     if (!newRepo) {
       setInputError('Digite o autor/nome do repositório');
-      return
+      return;
     }
 
     try {
@@ -63,7 +66,7 @@ const Dashboard: React.FC = () => {
         <input
           placeholder="Digite o nome do repositório"
           value={newRepo}
-          onChange={(e) => setNewRepo(e.target.value)}
+          onChange={e => setNewRepo(e.target.value)}
         />
         <button type="submit">Pesquisar</button>
       </Form>
@@ -72,8 +75,14 @@ const Dashboard: React.FC = () => {
 
       <Repositories>
         {repositories.map(repository => (
-          <Link key={repository.full_name} to={`/repositories/${repository.full_name}`}>
-            <img src={repository.owner.avatar_url} alt={repository.owner.login} />
+          <Link
+            key={repository.full_name}
+            to={`/repositories/${repository.full_name}`}
+          >
+            <img
+              src={repository.owner.avatar_url}
+              alt={repository.owner.login}
+            />
             <div>
               <strong>{repository.full_name}</strong>
               <p>{repository.description}</p>
@@ -85,6 +94,6 @@ const Dashboard: React.FC = () => {
       </Repositories>
     </>
   );
-}
+};
 
 export default Dashboard;

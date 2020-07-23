@@ -29,6 +29,11 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "implicit-arrow-linebreak": "off",
+    "no-unused-vars": "off",
+    "object-curly-newline": "off",
+    "camelcase": "off",
+    "arrow-parens": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-one-expression-per-line": "off",
