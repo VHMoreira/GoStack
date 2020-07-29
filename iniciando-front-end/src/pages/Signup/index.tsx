@@ -3,8 +3,8 @@ import { FiMail, FiLock, FiUser, FiArrowLeft } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
-import { Container, Content, Background } from './styles';
-
+import { Link } from 'react-router-dom';
+import { Container, Content, Background, AnimationContainer } from './styles';
 import logoImg from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -36,30 +36,32 @@ const Signup: React.FC = () => {
     <Container>
       <Background />
       <Content>
-        <img src={logoImg} alt="GoBarber" />
+        <AnimationContainer>
+          <img src={logoImg} alt="GoBarber" />
 
-        <Form
-          ref={formRef}
-          initialData={{ name: '', password: '', email: '' }}
-          onSubmit={handleSubmit}
-        >
-          <h1>Faça seu cadastro</h1>
+          <Form
+            ref={formRef}
+            initialData={{ name: '', password: '', email: '' }}
+            onSubmit={handleSubmit}
+          >
+            <h1>Faça seu cadastro</h1>
 
-          <Input icon={FiUser} name="name" placeholder="Nome" />
-          <Input icon={FiMail} name="email" placeholder="E-mail" />
-          <Input
-            icon={FiLock}
-            name="password"
-            type="password"
-            placeholder="Senha"
-          />
-          <Button type="submit">Cadastrar</Button>
-        </Form>
+            <Input icon={FiUser} name="name" placeholder="Nome" />
+            <Input icon={FiMail} name="email" placeholder="E-mail" />
+            <Input
+              icon={FiLock}
+              name="password"
+              type="password"
+              placeholder="Senha"
+            />
+            <Button type="submit">Cadastrar</Button>
+          </Form>
 
-        <a href="">
-          <FiArrowLeft />
-          Voltar para logon
-        </a>
+          <Link to="/">
+            <FiArrowLeft />
+            Voltar para logon
+          </Link>
+        </AnimationContainer>
       </Content>
     </Container>
   );
