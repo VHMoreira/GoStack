@@ -29,6 +29,7 @@
     "prettier"
   ],
   "rules": {
+    "no-unused-expressions": "warn",
     "prettier/prettier": "error",
     "react/prop-types": "warn",
     "@typescript-eslint/ban-types": "off",
