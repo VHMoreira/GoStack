@@ -1,4 +1,5 @@
 import path from 'path';
+import { injectable, inject } from 'tsyringe';
 import fs from 'fs';
 import uploadConfig from '@config/upload';
 import AppError from '@shared/errors/AppError';
@@ -11,7 +12,9 @@ interface IRequest {
 }
 
 class UpdateUserAvatarService {
-  constructor(private usersRepository: IUserRepository) { }
+  constructor(
+    @inject('UsersRepository') private usersRepository: IUserRepository,
+  ) { }
 
   public async execute({ user_id, avatarFilename }: IRequest): Promise<User> {
     const user = await this.usersRepository.findById(user_id);
