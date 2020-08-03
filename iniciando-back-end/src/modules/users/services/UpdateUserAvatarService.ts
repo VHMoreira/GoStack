@@ -1,7 +1,4 @@
-import path from 'path';
 import { injectable, inject } from 'tsyringe';
-import fs from 'fs';
-import uploadConfig from '@config/upload';
 import AppError from '@shared/errors/AppError';
 import IStorageProvider from '@shared/container/provider/StorageProvider/models/IStorageProvider';
 import User from '../infra/typeorm/entities/User';
@@ -26,7 +23,7 @@ class UpdateUserAvatarService {
       throw new AppError('Only authenticated user can change avatar.', 401);
     }
 
-    if (user.avatar !== null) {
+    if (user.avatar) {
       this.storageProvider.deleteFile(user.avatar);
     }
 
