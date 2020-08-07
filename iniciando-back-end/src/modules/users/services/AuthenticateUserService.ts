@@ -1,4 +1,3 @@
-import { compare } from 'bcryptjs';
 import { injectable, inject } from 'tsyringe';
 import { sign } from 'jsonwebtoken';
 import authConfig from '@config/auth';
