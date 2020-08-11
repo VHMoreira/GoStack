@@ -32,14 +32,10 @@ class ListProviderMonthAvailabilityService {
 
     const numberOfDaysInMonth = getDaysInMonth(new Date(year, month - 1));
 
-    console.log(numberOfDaysInMonth);
-
     const eachDayArray = Array.from(
       { length: numberOfDaysInMonth },
       (_, index) => index + 1,
     );
-
-    console.log(eachDayArray);
 
     const availability = eachDayArray.map(day => {
       const compareDate = new Date(year, month - 1, day, 23, 59, 59);
@@ -47,8 +43,6 @@ class ListProviderMonthAvailabilityService {
       const appointmentsInDay = appointments.filter(appointment => {
         return getDate(appointment.date) === day;
       });
-
-      console.log(appointmentsInDay);
 
       return {
         day,
