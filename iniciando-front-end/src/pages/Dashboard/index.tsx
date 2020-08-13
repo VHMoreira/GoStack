@@ -4,7 +4,6 @@ import ptBR from 'date-fns/locale/pt-BR';
 import { FiPower, FiClock } from "react-icons/fi";
 import DayPicker, { DayModifiers } from "react-day-picker";
 import 'react-day-picker/lib/style.css';
-import { date } from 'yup';
 import { Link } from 'react-router-dom';
 import { Container, Header, HeaderContent, Profile, Content, Schedule, Calendar, NextAppointment, Section, Appointment } from './styles';
 import logoImg from '../../assets/logo.svg';
@@ -69,7 +68,6 @@ const Dashboard: React.FC = () => {
         }
       })
 
-      console.log(appointmentsFormatted);
 
       setAppointments(appointmentsFormatted);
     });
@@ -112,7 +110,7 @@ const Dashboard: React.FC = () => {
 
   const nextAppointment = useMemo(() => {
     return appointments.find(appointment => isAfter(parseISO(appointment.date), new Date()));
-  }, [appointments, selectedDate]);
+  }, [appointments]);
 
 
   return (

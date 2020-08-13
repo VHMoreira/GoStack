@@ -1,6 +1,5 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { shade } from 'polished';
-import signupBackgroundImg from '../../assets/sign-up-background.png';
 
 export const Container = styled.div`
 
@@ -75,7 +74,7 @@ export const AvatarInput = styled.div`
     border-radius: 50%;
   }
 
-  button{
+  label{
     position: absolute;
     width: 48px;
     height: 48px;
@@ -85,10 +84,14 @@ export const AvatarInput = styled.div`
     bottom:0;
     border:0;
     transition: background 0.2s;
-
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    input{
+      display: none;
+    }
 
     svg{
       width: 20px;
