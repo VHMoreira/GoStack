@@ -3,7 +3,7 @@ import { View, Button } from 'react-native';
 
 import { useAuth } from '../../hooks/Auth';
 
-const Routes: React.FC = () => {
+const Dashboard: React.FC = () => {
   const { signOut } = useAuth();
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -12,4 +12,4 @@ const Routes: React.FC = () => {
   );
 };
 
-export default Routes;
+export default Dashboard;
